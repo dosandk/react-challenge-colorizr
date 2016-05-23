@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import NavBar from './components/NavBar';
-import Riba from './components/Riba';
+import Page from './components/Page';
 
 // import ReactRouter from '';
 // import Counter from './components/Counter/Counter';
@@ -26,8 +25,7 @@ import Riba from './components/Riba';
 
 export default () => (
     <Router history={browserHistory}>
-        <Route path="/" component={NavBar}>
-            <Route path="/riba" component={Riba} />
+        <Route path="/" component={Page}>
         </Route>
     </Router>
 )
