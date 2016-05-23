@@ -1,29 +1,14 @@
 import React from 'react';
+import ColorPickerWrapper from '../ColorPickerWrapper';
 import './index.scss';
 
 export default function Body() {
     return (
         <div className="content">
             <div className="create"  >
-                <div className="create__container">
-                    <h1 className="title">Choose your color</h1>
 
-                    <div className=" cp">
-                        <div className=" react-color-picker__saturation-spectrum"  >
-                            <div className="react-color-picker__saturation-white">
-                                <div className="react-color-picker__saturation-black"></div>
-                            </div>
-                            <div className="react-color-picker__saturation-drag"  >
-                                <div className="react-color-picker__saturation-inner"></div>
-                            </div>
-                        </div>
-                        <div className="react-color-picker__hue-spectrum"  >
-                            <div className="react-color-picker__hue-drag"  >
-                                <div className="react-color-picker__hue-inner"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ColorPickerWrapper />
+
                 <div className="selected">
                     <h2 className="selected__title">Select up to ten colors</h2>
 
