@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import NavBar from './components/NavBar';
-import Riba from './components/Riba';
 
 // import ReactRouter from '';
 // import Counter from './components/Counter/Counter';

@@ -2,50 +2,41 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ColorPicker from 'react-color-picker'
+import { shadeColor, blendColors } from '../../utils/colors-converters';
 import './index.scss'
 
 class ColorPickerWrapper extends Component {
     constructor(props) {
         super(props);
-        console.log('arguments', arguments);
 
         this.state = {
-            riba: 'riba'
+            mainColor: '#3B97D3'
         };
 
-        this.onDrag = (color, c) => {
-            document.body.style.background = color;
-            // this.setState({})
+        this.onChangeColor = (color) => {
+            this.props.changeColor(color);
         };
     }
 
     render() {
-        const changeState = this.props.changeState;
-
-        console.log('render', changeState);
-
         return (
             <div className="create__container">
-                <h1 className="title" onClick={changeState}>Choose your color</h1>
-
-                <ColorPicker defaultValue='#452135' onDrag={this.onDrag} />
+                <h1 className="title">Choose your color</h1>
+                <ColorPicker defaultValue='#452135' onDrag={this.onChangeColor.bind(this)} />
             </div>
         )
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         user: state.user,
-//         page: state.page
-//     }
-// }
+function mapStateToProps(state) {
+    return state
+}
 
 
 function someAction(data) {
     return (dispatch) => {
         dispatch({
-            type: 'STATE-1',
+            type: 'CHANGE_COLOR',
             data
         });
     }
@@ -53,8 +44,8 @@ function someAction(data) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeState: bindActionCreators(someAction, dispatch)
+        changeColor: bindActionCreators(someAction, dispatch)
     }
 }
 
-export default connect(null, mapDispatchToProps)(ColorPickerWrapper)
+export default connect(mapStateToProps, mapDispatchToProps)(ColorPickerWrapper)
