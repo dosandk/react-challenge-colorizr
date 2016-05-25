@@ -1,14 +1,8 @@
-const initialState = {
-    mainColor: '#3B97D3'
-};
+import SetUpColors from './SetUpColors';
+import mixedWith from './mixedWith';
+import { combineReducers } from 'redux'
 
-export default function rootReducer(state = initialState, action) {
-    switch (action.type) {
-    case 'CHANGE_COLOR':
-        return { ...state, mainColor: action.data };
-    case 'SELECT_COLOR':
-        return { ...state, mainColor: action.data };
-    default:
-        return state;
-    }
-};
+export default combineReducers({
+    SetUpColors,
+    mixedWith
+})

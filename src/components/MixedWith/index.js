@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorPicker from 'react-color-picker'
 import './index.scss'
 
 class Color extends React.Component {
@@ -38,9 +39,11 @@ export default class MixedWith extends React.Component {
             <div className="container color-samples-container">
                 <header className="create__header">
                     <h2>Mixed with </h2>
-                    <span className="mixer">&nbsp;</span>
+                    <span className="mixer" style={{background: '#894B9D'}}></span>
                 </header>
-
+                <div className="cp_shown" style={{display: 'block'}} >
+                    <ColorPicker defaultValue='#452135' onDrag={() => {}} />
+                </div>
                 <div className="color-samples-wrapper">
                     <ul className="color-samples">
                         {[...Array(10)].map((x, i) =>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ColorPicker from 'react-color-picker'
-import { shadeColor, blendColors } from '../../utils/colors-converters';
 import './index.scss'
 
 class ColorPickerWrapper extends Component {

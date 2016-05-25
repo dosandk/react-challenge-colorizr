@@ -1,3 +1,17 @@
+.cp_shown {
+    background-color: red;
+    position: relative;
+    width: 100%
+}
+
+.cp_shown .cp {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    width: 100%;
+    max-width: 400px
+}
+
 .color-samples {
     display: -webkit-flex;
     display: -ms-flexbox;

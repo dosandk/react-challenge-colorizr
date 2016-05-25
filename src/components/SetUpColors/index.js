@@ -23,9 +23,6 @@ class Color extends React.Component {
     }
 
     render() {
-        console.error('render2');
-        console.log(this.props);
-
         const elemtStyles = {
             background: this.props.color,
             borderColor: this.state.defaultBg
@@ -60,9 +57,6 @@ class setUpColors extends React.Component {
     }
 
     render() {
-        console.error('RENDER');
-        console.log(this.props);
-
         return (
             <div className="selected">
                 <h2 className="selected__title">Select up to ten colors</h2>
@@ -71,7 +65,7 @@ class setUpColors extends React.Component {
 
                 <ul className="selected__colors">
                     {[...Array(COLORS_SIZE)].map((x, i) =>
-                        <Color key={i + 1} color={ this.props.mainColor } />
+                        <Color key={i + 1} color={ this.props.SetUpColors.mainColor } />
                     )}
                 </ul>
             </div>

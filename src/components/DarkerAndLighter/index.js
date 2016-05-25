@@ -1,39 +1,35 @@
 import React from 'react';
+import { shadeColor } from '../../utils/colors-converters';
+import { COLORS_SIZE } from '../../constants';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import './index.scss'
 
-class Color extends React.Component {
-    constructor(props) {
-        super(props);
+const Color = (props) => {
+    var style = {
+        background: props.color || '#004B87'
+    };
 
-        this.state = {
-            id: 0,
-            selected: true,
-            defaultBg: '#F5F5F5',
-            defaultColor: '#F5F5F5',
-            defaultBorderColor: '#F5F5F5'
-        };
+    const onSelectColor = (e) => {
+        console.error('onSelectColor', e);
+        console.log(props);
+        props.selectColor();
+    };
 
-        this.events = {
-            removeColor: function () {
-                console.error('remove event');
-            }
-        }
-    }
+    return (
+        <li className="color-sample color-sample--selected"
+            onClick={onSelectColor}
+            style={style}>
+            {(() => {
+                if (true) {
+                    return <i className="fa fa-times" style={{color: '#fff'}}></i>
+                }
+            })()}
+        </li>
+    )
+};
 
-    render() {
-        return (
-            <li className="color-sample color-sample--selected" style={{background: '#004B87'}}>
-                {(() => {
-                    if (this.state.selected) {
-                        return <i className="fa fa-times" style={{color: '#fff'}}></i>
-                    }
-                })()}
-            </li>
-        )
-    }
-}
-
-export default class DarkerAndLighter extends React.Component {
+class DarkerAndLighter extends React.Component {
     constructor(props) {
         super(props);
 
@@ -43,8 +39,19 @@ export default class DarkerAndLighter extends React.Component {
     }
 
     render() {
-        console.error('RENDER');
-        console.log(this.props);
+        console.log('this.props', this.props);
+
+        let ColorsList = [];
+        const initValue = this.props.mainColor;
+        const selectColor = this.props.selectColor;
+
+        new Array(COLORS_SIZE).fill(true).reduce(function(previousValue, currentItem, index) {
+            const newColor = shadeColor(previousValue, -0.1);
+
+            ColorsList.push(<Color color={newColor} key={index} selectColor={selectColor} />);
+
+            return newColor;
+        }, initValue);
 
         return (
             <div className="container color-samples-container">
@@ -52,9 +59,7 @@ export default class DarkerAndLighter extends React.Component {
 
                 <div className="color-samples-wrapper">
                     <ul className="color-samples">
-                        {[...Array(10)].map((x, i) =>
-                            <Color key={i + 1} color={ this.props.mainColor } />
-                        )}
+                        { ColorsList }
                     </ul>
                     <footer className="color-samples-footer">
                         <button className="btn btn--default">
@@ -68,3 +73,27 @@ export default class DarkerAndLighter extends React.Component {
         );
     }
 }
+
+DarkerAndLighter.propTypes = {};
+DarkerAndLighter.defaultProps = {};
+
+function someAction(data) {
+    return (dispatch) => {
+        dispatch({
+            type: 'SELECT_COLOR',
+            data
+        });
+    }
+}
+
+function mapStateToProps(state) {
+    return state.SetUpColors;
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        selectColor: bindActionCreators(someAction, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DarkerAndLighter)

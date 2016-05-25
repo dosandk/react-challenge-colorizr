@@ -7,19 +7,27 @@
 <body>
 <style>
     .riba {
-        background: #008080;
+        background: #ff0000;
+        background: #e60000;
+        background: #cf0000;
+        background: #ba0000;
+        background: #a70000;
+        background: #960000;
+        background: #870000;
+        background: #7a0000;
+        background: #6e0000;
+        background: #630000;
     }
 </style>
     <script>
-        function shadeColor2(color, percent) {
+        function shadeColor(color, percent) {
             var f = parseInt(color.slice(1),16),
-                t = percent<0?0:255,
-                p = percent<0?percent*-1:percent,
-                R = f>>16,
-                G = f>>8&0x00FF,
-                B = f&0x0000FF;
+                    t = percent < 0 ? 0:255,
+                    p = percent < 0 ? percent*-1:percent,
+                    R = f >> 16, G = f >> 8 & 0x00FF,
+                    B = f & 0x0000FF;
 
-            return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+            return "#" + (0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
         }
 
         function blendColors(c0, c1, p) {
@@ -35,7 +43,53 @@
             return "#"+(0x1000000+(Math.round((R2-R1)*p)+R1)*0x10000+(Math.round((G2-G1)*p)+G1)*0x100+(Math.round((B2-B1)*p)+B1)).toString(16).slice(1);
         }
 
-        console.log(blendColors('#00ff00', '#0000ff', 0.5));
+//        console.log(blendColors('#00ff00', '#0000ff', 0.5));
+
+        var initVal = '#ff0000';
+        var arr = Array(10);
+
+        var riba = arr.reduce(function(previousValue, currentItem, index, arr) {
+            console.log('previousValue', previousValue);
+            console.log('currentItem', currentItem);
+
+            return shadeColor(previousValue, 10);
+        }, {});
+
+        var someArr = [];
+
+        new Array(10).fill(1).reduce(function(previousValue, currentItem, index, arr) {
+            console.log('previousValue', previousValue);
+
+            someArr.push(shadeColor(previousValue, -0.1));
+
+            return shadeColor(previousValue, -0.1);
+        }, initVal);
+
+        console.log('someArr', someArr);
+
+//        var color1 = shadeColor('#ff0000', -0.1);
+//        var color2 = shadeColor(color1, -0.1);
+//        var color3 = shadeColor(color2, -0.1);
+//        var color4 = shadeColor(color3, -0.1);
+//        var color5 = shadeColor(color4, -0.1);
+//        var color6 = shadeColor(color5, -0.1);
+//        var color7 = shadeColor(color6, -0.1);
+//        var color8 = shadeColor(color7, -0.1);
+//        var color9 = shadeColor(color8, -0.1);
+//        var color10 = shadeColor(color9, -0.1);
+//
+//        console.log(color1);
+//        console.log(color2);
+//        console.log(color3);
+//        console.log(color4);
+//        console.log(color5);
+//        console.log(color6);
+//        console.log(color7);
+//        console.log(color8);
+//        console.log(color9);
+//        console.log(color10);
+
+
     </script>
 </body>
 </html>
