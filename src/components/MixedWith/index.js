@@ -1,22 +1,26 @@
 import React from 'react';
 import ColorPicker from 'react-color-picker'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import selectColor from '../../actions'
 import './index.scss'
 
 class Color extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            id: 0,
-            selected: true
-        };
+        this.onSelectColor = () => {
+            this.props.selectColor(this.props.color)
+        }
     }
 
     render() {
         return (
-            <li className="color-sample color-sample--selected" style={{background: '#004B87'}}>
+            <li className="color-sample color-sample--selected"
+                onClick={this.onSelectColor}
+                style={{background: '#004B87'}}>
                 {(() => {
-                    if (this.state.selected) {
+                    if (true) {
                         return <i className="fa fa-times" style={{color: '#fff'}}></i>
                     }
                 })()}
@@ -25,29 +29,24 @@ class Color extends React.Component {
     }
 }
 
-export default class MixedWith extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            colors: []
-        }
-    }
-
+class MixedWith extends React.Component {
     render() {
+        console.error('MixedWith');
+        console.log(this.props);
+
         return (
             <div className="container color-samples-container">
                 <header className="create__header">
                     <h2>Mixed with </h2>
                     <span className="mixer" style={{background: '#894B9D'}}></span>
                 </header>
-                <div className="cp_shown" style={{display: 'block'}} >
+                <div className="cp_shown" style={{display: 'none'}} >
                     <ColorPicker defaultValue='#452135' onDrag={() => {}} />
                 </div>
                 <div className="color-samples-wrapper">
                     <ul className="color-samples">
                         {[...Array(10)].map((x, i) =>
-                            <Color key={i + 1} color={ this.props.mainColor } />
+                            <Color key={i + 1} color={ this.props.mainColor } selectColor={ this.props.selectColor } />
                         )}
                     </ul>
                     
@@ -63,3 +62,18 @@ export default class MixedWith extends React.Component {
         );
     }
 }
+
+MixedWith.propTypes = {};
+MixedWith.defaultProps = {};
+
+function mapStateToProps(state) {
+    return state.SetUpColors;
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        selectColor: bindActionCreators(selectColor, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MixedWith)

@@ -1,6 +1,7 @@
-import React from 'react';
-import { shadeColor } from '../../utils/colors-converters';
-import { COLORS_SIZE } from '../../constants';
+import React from 'react'
+import selectColor from '../../actions'
+import { shadeColor } from '../../utils/colors-converters'
+import { COLORS_SIZE } from '../../constants'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import './index.scss'
@@ -13,7 +14,7 @@ const Color = (props) => {
     const onSelectColor = (e) => {
         console.error('onSelectColor', e);
         console.log(props);
-        props.selectColor();
+        props.selectColor(props.color);
     };
 
     return (
@@ -30,14 +31,6 @@ const Color = (props) => {
 };
 
 class DarkerAndLighter extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            colors: []
-        }
-    }
-
     render() {
         console.log('this.props', this.props);
 
@@ -77,22 +70,13 @@ class DarkerAndLighter extends React.Component {
 DarkerAndLighter.propTypes = {};
 DarkerAndLighter.defaultProps = {};
 
-function someAction(data) {
-    return (dispatch) => {
-        dispatch({
-            type: 'SELECT_COLOR',
-            data
-        });
-    }
-}
-
 function mapStateToProps(state) {
     return state.SetUpColors;
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        selectColor: bindActionCreators(someAction, dispatch)
+        selectColor: bindActionCreators(selectColor, dispatch)
     }
 }
 

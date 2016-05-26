@@ -7,14 +7,6 @@ class Color extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            id: 0,
-            selected: true,
-            defaultBg: '#F5F5F5',
-            defaultColor: '#F5F5F5',
-            defaultBorderColor: '#F5F5F5'
-        };
-
         this.events = {
             removeColor: function () {
                 console.error('remove event');
@@ -23,22 +15,22 @@ class Color extends React.Component {
     }
 
     render() {
-        const elemtStyles = {
-            background: this.props.color,
-            borderColor: this.state.defaultBg
+        const elementStyles = {
+            background: this.props.color || '#F5F5F5',
+            borderColor: '#F5F5F5'
         };
 
         const btnStyles = {
-            color: this.state.defaultColor
+            color: '#F5F5F5'
         };
 
         return (
             <li className="selected__color selected__color--active"
                 onClick={this.events.removeColor}
-                style={elemtStyles}>
+                style={elementStyles}>
 
                 {(() => {
-                    if (this.state.selected) {
+                    if (true) {
                         return <i className="fa fa-times selected__icon" style={btnStyles}></i>
                     }
                 })()}
@@ -48,15 +40,10 @@ class Color extends React.Component {
 }
 
 class setUpColors extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            colors: []
-        }
-    }
-
     render() {
+        console.error('setUpColors');
+        console.log(this.props);
+
         return (
             <div className="selected">
                 <h2 className="selected__title">Select up to ten colors</h2>
@@ -65,7 +52,7 @@ class setUpColors extends React.Component {
 
                 <ul className="selected__colors">
                     {[...Array(COLORS_SIZE)].map((x, i) =>
-                        <Color key={i + 1} color={ this.props.SetUpColors.mainColor } />
+                        <Color key={i + 1} color={ this.props.common.selectedColors[i] } />
                     )}
                 </ul>
             </div>

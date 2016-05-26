@@ -3,6 +3,7 @@ import ColorPickerWrapper from '../ColorPickerWrapper'
 import SetUpColors from '../SetUpColors'
 import DarkerAndLighter from '../DarkerAndLighter';
 import MixedWith from '../MixedWith';
+
 import './index.scss';
 
 export default function Body() {
