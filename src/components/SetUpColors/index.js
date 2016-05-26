@@ -1,20 +1,14 @@
 import React from 'react';
-import { COLORS_SIZE } from '../../constants';
+import { COLORS_SIZE } from '../../constants'
+import { bindActionCreators } from 'redux'
+import { removeColor } from '../../actions'
 import { connect } from 'react-redux'
 import css from './index.scss'
 
 class Color extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.events = {
-            removeColor: function () {
-                console.error('remove event');
-            }
-        }
-    }
-
     render() {
+        const self = this;
+
         const elementStyles = {
             background: this.props.color || '#F5F5F5',
             borderColor: '#F5F5F5'
@@ -24,9 +18,13 @@ class Color extends React.Component {
             color: '#F5F5F5'
         };
 
+        function onRemoveColor() {
+            self.props.removeColor(self.props.color);
+        }
+
         return (
             <li className="selected__color selected__color--active"
-                onClick={this.events.removeColor}
+                onClick={onRemoveColor}
                 style={elementStyles}>
 
                 {(() => {
@@ -41,9 +39,6 @@ class Color extends React.Component {
 
 class setUpColors extends React.Component {
     render() {
-        console.error('setUpColors');
-        console.log(this.props);
-
         return (
             <div className="selected">
                 <h2 className="selected__title">Select up to ten colors</h2>
@@ -52,7 +47,7 @@ class setUpColors extends React.Component {
 
                 <ul className="selected__colors">
                     {[...Array(COLORS_SIZE)].map((x, i) =>
-                        <Color key={i + 1} color={ this.props.common.selectedColors[i] } />
+                        <Color key={i + 1} color={ this.props.common.selectedColors[i] } removeColor={this.props.removeColor} />
                     )}
                 </ul>
             </div>
@@ -67,19 +62,10 @@ function mapStateToProps(state) {
     return state;
 }
 
-// function someAction(data) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: 'STATE-1',
-//             data
-//         });
-//     }
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         pageActions: bindActionCreators(someAction, dispatch)
-//     }
-// }
+function mapDispatchToProps(dispatch) {
+    return {
+        removeColor: bindActionCreators(removeColor, dispatch)
+    }
+}
 
-export default connect(mapStateToProps, null)(setUpColors)
+export default connect(mapStateToProps, mapDispatchToProps)(setUpColors)

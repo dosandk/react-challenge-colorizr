@@ -1,5 +1,5 @@
 import React from 'react'
-import selectColor from '../../actions'
+import { selectColor } from '../../actions'
 import { shadeColor } from '../../utils/colors-converters'
 import { COLORS_SIZE } from '../../constants'
 import { connect } from 'react-redux'

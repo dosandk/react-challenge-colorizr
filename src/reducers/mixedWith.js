@@ -16,9 +16,6 @@ export default function mixedWith(state = initialState, action) {
     case 'mixedWith SELECT_COLOR':
         console.error('SELECT_COLOR');
         return { ...state  };
-    case 'REMOVE_COLOR':
-        console.error('REMOVE_COLOR');
-        return { ...state  };
     case 'SELECT_ALL_COLORS':
         console.error('SELECT_ALL_COLORS');
         return { ...state };

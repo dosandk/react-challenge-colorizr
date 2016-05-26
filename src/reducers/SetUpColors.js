@@ -4,9 +4,9 @@ const initialState = {
 
 export default function SetUpColors(state=initialState, action) {
     switch (action.type) {
-    case 'REMOVE_COLOR':
-        console.error('REMOVE_COLOR');
-        return { ...state };
+    // case 'REMOVE_COLOR':
+    //     console.error('REMOVE_COLOR');
+    //     return { ...state };
     default:
         return state;
     }
