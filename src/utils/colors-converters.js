@@ -9,7 +9,7 @@ function shadeColor(color, percent) {
     return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
 }
 
-function blendColors(c0, c1, p) {
+function mixColors(c0, c1, p) {
     var f = parseInt(c0.slice(1),16),
         t = parseInt(c1.slice(1),16),
         R1 = f>>16,
@@ -22,4 +22,4 @@ function blendColors(c0, c1, p) {
     return "#"+(0x1000000+(Math.round((R2-R1)*p)+R1)*0x10000+(Math.round((G2-G1)*p)+G1)*0x100+(Math.round((B2-B1)*p)+B1)).toString(16).slice(1);
 }
 
-export { shadeColor, blendColors }
+export { shadeColor, mixColors }

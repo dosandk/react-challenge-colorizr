@@ -1,9 +1,32 @@
 import * as Constants from '../constants'
 
+import { shadeColor, mixColors } from '../utils/colors-converters'
+
 const initialState = {
     mainColor: '#3B97D3',
-    selectedColors: []
+    mixedColor: '#894B9D',
+    selectedColors: [],
+    shadedColors: [],
+    mixedColors: []
 };
+
+(function() {
+    const shadeRatio = Constants.MIX_RATION;
+    const mixRation = Constants.SHADE_RATIO;
+
+    let shadedColor = initialState.mainColor;
+    let mixedColor = initialState.mainColor;
+
+    (function() {
+        for (let i = 0; i < Constants.COLORS_SIZE; i++) {
+            shadedColor = shadeColor(shadedColor,  shadeRatio);
+            mixedColor = mixColors(mixedColor, initialState.mixedColor, mixRation);
+
+            initialState.shadedColors.push(shadedColor);
+            initialState.mixedColors.push(mixedColor);
+        }
+    }())
+}());
 
 export default function common(state = initialState, action) {
     switch (action.type) {
