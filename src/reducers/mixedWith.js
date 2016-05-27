@@ -16,15 +16,15 @@ export default function mixedWith(state = initialState, action) {
     case 'mixedWith SELECT_COLOR':
         console.error('SELECT_COLOR');
         return { ...state  };
-    case 'SELECT_ALL_COLORS':
-        console.error('SELECT_ALL_COLORS');
-        return { ...state };
-    case 'REMOVE_ALL_COLORS':
-        console.error('REMOVE_ALL_COLORS');
-        return { ...state };
-    case 'CHANGE_THEME':
-        console.error('CHANGE_THEME');
-        return { ...state  };
+    // case 'SELECT_ALL_COLORS':
+    //     console.error('SELECT_ALL_COLORS');
+    //     return { ...state };
+    // case 'REMOVE_ALL_COLORS':
+    //     console.error('REMOVE_ALL_COLORS');
+    //     return { ...state };
+    // case 'CHANGE_THEME':
+    //     console.error('mixedWith CHANGE_THEME');
+    //     return { ...state  };
     default:
         return state;
     }

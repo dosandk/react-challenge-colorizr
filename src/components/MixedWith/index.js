@@ -2,7 +2,7 @@ import React from 'react';
 import ColorPicker from 'react-color-picker'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { selectColor } from '../../actions'
+import selectColor from '../../actions/select-color'
 import './index.scss'
 
 class Color extends React.Component {

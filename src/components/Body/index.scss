@@ -124,50 +124,50 @@
     margin-right: auto
 }
 
-.color-samples-container {
-    background-color: #fff;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    margin-bottom: 5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2)
-}
+//.color-samples-container {
+//    background-color: #fff;
+//    margin-top: 3rem;
+//    padding-top: 2rem;
+//    margin-bottom: 5rem;
+//    box-shadow: 0 2px 5px rgba(0, 0, 0, .2)
+//}
+//
+//.color-samples-container h2 {
+//    margin: 0;
+//    margin-left: 5rem;
+//    margin-top: 0
+//}
+//
+//
+//.color-samples-wrapper {
+//    padding-top: 2rem
+//}
 
-.color-samples-container h2 {
-    margin: 0;
-    margin-left: 5rem;
-    margin-top: 0
-}
+//.color-sample {
+//    cursor: pointer;
+//    width: 100%;
+//    height: 5rem;
+//    text-align: center;
+//    padding-top: 1.5rem;
+//    border-radius: .4rem
+//}
+//
+//.color-sample .fa {
+//    transition: opacity .2s;
+//    opacity: 0
+//}
+//
+//.color-sample--selected .fa, .color-sample:hover .fa {
+//    opacity: 1
+//}
 
-
-.color-samples-wrapper {
-    padding-top: 2rem
-}
-
-.color-sample {
-    cursor: pointer;
-    width: 100%;
-    height: 5rem;
-    text-align: center;
-    padding-top: 1.5rem;
-    border-radius: .4rem
-}
-
-.color-sample .fa {
-    transition: opacity .2s;
-    opacity: 0
-}
-
-.color-sample--selected .fa, .color-sample:hover .fa {
-    opacity: 1
-}
-
-.color-samples-footer {
-    padding: 2rem 1rem
-}
-
-.color-samples-footer .btn {
-    margin-left: 1.5rem
-}
+//.color-samples-footer {
+//    padding: 2rem 1rem
+//}
+//
+//.color-samples-footer .btn {
+//    margin-left: 1.5rem
+//}
 
 .btn {
     cursor: pointer;
@@ -248,17 +248,17 @@
     width: 100%
 }
 
-@media (min-width: 550px) {
-    .color-samples-footer {
-        padding: 3rem
-    }
-}
-
-@media (min-width: 900px) {
-    .color-samples-footer {
-        padding: 3rem 5rem
-    }
-}
+//@media (min-width: 550px) {
+//    .color-samples-footer {
+//        padding: 3rem
+//    }
+//}
+//
+//@media (min-width: 900px) {
+//    .color-samples-footer {
+//        padding: 3rem 5rem
+//    }
+//}
 
 @media (min-width: 900px) {
     .color-sample {

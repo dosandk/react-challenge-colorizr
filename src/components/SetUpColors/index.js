@@ -1,7 +1,7 @@
 import React from 'react';
 import { COLORS_SIZE } from '../../constants'
 import { bindActionCreators } from 'redux'
-import { removeColor } from '../../actions'
+import removeColor from '../../actions/remove-color'
 import { connect } from 'react-redux'
 import css from './index.scss'
 
@@ -11,7 +11,7 @@ class Color extends React.Component {
 
         const elementStyles = {
             background: this.props.color || '#F5F5F5',
-            borderColor: '#F5F5F5'
+            borderColor: this.props.color || '#F5F5F5'
         };
 
         const btnStyles = {
