@@ -7,18 +7,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 const ColorsList = (props) => {
-    console.error('COLORS LIST');
-    console.log(props);
+    const { shadedColors, mixedColors, selectedColors } = props.common;
+    const component = props.componentName === 'shade' ? props.DarkerAndLighter : props.mixedWith;
+    const themeClass = component.theme === 'dark' ? 'color-samples--dark' : '';
+    const colors = props.componentName === 'shade' ? shadedColors : mixedColors;
 
-    const {shadedColors, selectedColors} = props.common;
-    const themeClass = props.DarkerAndLighter.theme === 'dark' ? 'color-samples--dark' : '';
-
-    const ColorsComponents = shadedColors.map((color, index) => {
+    const ColorsComponents = colors.map((color, index) => {
         const isSelected = selectedColors.indexOf(color) >= 0;
 
         return <Color color={ color }
                       key={ index }
-                      selected={ isSelected}
+                      selected={ isSelected }
                       removeColor={ props.removeColor }
                       selectColor={ props.selectColor } />
     });

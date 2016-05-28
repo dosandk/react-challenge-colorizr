@@ -7,6 +7,9 @@ const initialState = {
 
 export default function mixedWith(state = initialState, action) {
     switch (action.type) {
+    case 'CHANGE_MIXED_THEME':
+        console.error('mixedWith CHANGE_THEME');
+        return { ...state, theme: action.data };
     case 'CHANGE_MIX_COLOR':
         console.error('CHANGE_MIX_COLOR');
         return { ...state };

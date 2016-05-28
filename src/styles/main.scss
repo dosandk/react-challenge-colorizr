@@ -18,8 +18,15 @@ body {
 }
 
 .content {
-    overflow: hidden;
-    background: orange;
+    width: 100%;
+    display: table;
+    //background: orange;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto
 }
 
 //.container {

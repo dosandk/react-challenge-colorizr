@@ -5,8 +5,8 @@ const initialState = {
 
 export default function DarkerAndLighter(state = initialState, action) {
     switch (action.type) {
-        case 'CHANGE_THEME':
-            console.error('DarkerAndLighter CHANGE_THEME');
+        case 'CHANGE_SHADE_THEME':
+            console.error('DarkerAndLighter CHANGE_SHADE_THEME');
             return { ...state, theme: action.data };
         case 'SELECT_ALL_COLORS':
             console.error('DarkerAndLighter SELECT_ALL_COLORS');

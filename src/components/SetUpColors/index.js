@@ -3,7 +3,7 @@ import { COLORS_SIZE } from '../../constants'
 import { bindActionCreators } from 'redux'
 import removeColor from '../../actions/remove-color'
 import { connect } from 'react-redux'
-import css from './index.scss'
+import './index.scss'
 
 class Color extends React.Component {
     render() {
@@ -26,12 +26,7 @@ class Color extends React.Component {
             <li className="selected__color selected__color--active"
                 onClick={onRemoveColor}
                 style={elementStyles}>
-
-                {(() => {
-                    if (true) {
-                        return <i className="fa fa-times selected__icon" style={btnStyles}></i>
-                    }
-                })()}
+                <i className="fa fa-times selected__icon" style={btnStyles}></i>
             </li>
         )
     }

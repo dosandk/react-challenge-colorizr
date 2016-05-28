@@ -1,5 +1,6 @@
 import React from 'react'
-import changeTheme from '../../actions/change-theme'
+import ColorPallet from '../colorPallet'
+import changeShadeTheme from '../../actions/change-shade-theme'
 import ColorsList from '../../containers/ColorsList'
 import selectAllColors from '../../actions/select-all-colors'
 import removeAllColors from '../../actions/remove-all-colors'
@@ -10,46 +11,35 @@ import './index.scss'
 
 class DarkerAndLighter extends React.Component {
     render() {
-        console.error('DarkerAndLighter');
-        console.log('this.props', this.props);
-
-        const onChangeTheme = () => {
-            const theme = this.props.DarkerAndLighter.theme;
-
-            switch (theme) {
-            case 'light':
-                this.props.changeTheme('dark');
-                break;
-            case 'dark':
-                this.props.changeTheme('light');
-                break;
-            }
-        };
+        const { theme, showRemoveAllBtn } = this.props.DarkerAndLighter;
+        const palletName = 'Darker and Lighter';
 
         const onSelectAllColors = () => {
             this.props.selectAllColors(this.props.common.shadedColors);
         };
 
+        const removeAllColors = this.props.removeAllColors;
+
+        const onChangeTheme = () => {
+            switch (theme) {
+            case 'light':
+                this.props.changeShadeTheme('dark');
+                break;
+            case 'dark':
+                this.props.changeShadeTheme('light');
+                break;
+            }
+        };
+
         return (
-            <div className="container color-samples-container">
-                <h2>Darker and Lighter</h2>
-
-                <div className="color-samples-wrapper">
-
-                    <ColorsList />
-
-                    <footer className="color-samples-footer">
-                        <button className="btn btn--default" onClick={onChangeTheme} >
-                            { (this.props.DarkerAndLighter.theme === 'dark' ? 'Light background' : 'Dark background') }
-                        </button>
-                        <button className="btn btn--default" onClick={onSelectAllColors}>Select all</button>
-                        <button className={'btn btn--danger ' + (this.props.DarkerAndLighter.showRemoveAllBtn ? '' : 'hide')}
-                                onClick={this.props.removeAllColors}>
-                            Remove all
-                        </button>
-                    </footer>
-                </div>
-            </div>
+            <ColorPallet onChangeTheme={onChangeTheme}
+                         onSelectAllColors={onSelectAllColors}
+                         removeAllColors={removeAllColors}
+                         palletName={palletName}
+                         showRemoveAllBtn={showRemoveAllBtn}
+                         theme={theme}>
+                <ColorsList componentName={'shade'}/>
+            </ColorPallet>
         );
     }
 }
@@ -63,7 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        changeTheme: bindActionCreators(changeTheme, dispatch),
+        changeShadeTheme: bindActionCreators(changeShadeTheme, dispatch),
         selectAllColors: bindActionCreators(selectAllColors, dispatch),
         removeAllColors: bindActionCreators(removeAllColors, dispatch)
     }

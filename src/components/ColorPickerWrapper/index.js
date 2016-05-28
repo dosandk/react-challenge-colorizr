@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import changeMainColor from '../../actions/change-main-color'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ColorPicker from 'react-color-picker'
@@ -8,12 +9,9 @@ class ColorPickerWrapper extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            mainColor: '#3B97D3'
-        };
-
         this.onChangeColor = (color) => {
-            this.props.changeColor(color);
+            this.props.changeMainColor(color);
+            document.querySelector('.content').style.background = color;
         };
     }
 
@@ -31,19 +29,9 @@ function mapStateToProps(state) {
     return state
 }
 
-
-function someAction(data) {
-    return (dispatch) => {
-        dispatch({
-            type: 'CHANGE_COLOR',
-            data
-        });
-    }
-}
-
 function mapDispatchToProps(dispatch) {
     return {
-        changeColor: bindActionCreators(someAction, dispatch)
+        changeMainColor: bindActionCreators(changeMainColor, dispatch)
     }
 }
 

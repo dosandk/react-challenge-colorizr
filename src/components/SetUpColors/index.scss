@@ -43,3 +43,12 @@
 .selected__color:hover .selected__icon {
     opacity: 1
 }
+
+@media (min-width: 900px) {
+    .selected__color {
+        height: 5rem;
+        width: 5rem;
+        padding: 1.3rem;
+        margin: 1rem
+    }
+}
