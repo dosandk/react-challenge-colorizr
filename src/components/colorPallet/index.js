@@ -2,48 +2,73 @@ import React from 'react';
 import ColorPicker from 'react-color-picker'
 import './index.scss'
 
-const Header = (props) => {
-    const singleHeader = () => {
-        return (
-            <header className="create__header">
-                <div>
-                    <h2>{ props.palletName }</h2>
-                </div>
-            </header>
-        );
-    };
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
 
-    const headerWithColorPicker = () => {
-        return (
-            <header className="create__header">
-                <div>
-                    <h2>{ props.palletName }</h2>
-                    <span className="mixer" style={{background: '#894B9D'}}></span>
-                </div>
-                <div className="cp_shown">
-                    <ColorPicker defaultValue='#452135' onDrag={() => {}} />
-                </div>
-            </header>
-        );
-    };
+        this.state = {
+            isColorPickerVisible: false
+        };
 
-    return props.showColorPicker ? headerWithColorPicker() : singleHeader();
-};
+        this.onMixerClick = () => {
+            this.setState({ isColorPickerVisible: !this.state.isColorPickerVisible });
+        };
+
+        this.onChangeMixColor = (color) => {
+            this.props.changeMixedColor(color)
+        }
+    }
+
+    render () {
+        const singleHeader = () => {
+            return (
+                <header className="create__header">
+                    <div>
+                        <h2>{ this.props.palletName }</h2>
+                    </div>
+                </header>
+            );
+        };
+
+        const headerWithColorPicker = () => {
+            return (
+                <header className="create__header">
+                    <div>
+                        <h2>{ this.props.palletName }</h2>
+                    <span className="mixer"
+                          onClick={ this.onMixerClick }
+                          style={{ background: this.props.mixedColor }}></span>
+                    </div>
+                    <div className={'cp_shown ' + (this.state.isColorPickerVisible ? '' : 'hide')} >
+                        <ColorPicker defaultValue={this.props.mixedColor} onDrag={ this.onChangeMixColor } />
+                    </div>
+                </header>
+            );
+        };
+
+        return this.props.showColorPicker ? headerWithColorPicker() : singleHeader();
+    }
+}
 
 export default function colorPallet(props) {
     const currentState = {
+        mixedColor: props.mixedColor || '#894B9D',
         showColorPicker: props.showColorPicker || false,
         palletName: props.palletName || 'Colors pallet',
         onChangeTheme: props.onChangeTheme || null,
         removeAllColors: props.removeAllColors || null,
         onSelectAllColors: props.onSelectAllColors || null,
         showRemoveAllBtn: props.showRemoveAllBtn || false,
+        isColorPickerVisible: props.isColorPickerVisible || false,
+        changeMixedColor: props.changeMixedColor || null,
         theme: props.theme || 'light'
     };
 
     return (
         <div className="container color-samples-container">
             <Header palletName={ currentState.palletName }
+                    mixedColor={ currentState.mixedColor}
+                    changeMixedColor= { currentState.changeMixedColor }
                     showColorPicker={ currentState.showColorPicker } />
 
             <div className="color-samples-wrapper">

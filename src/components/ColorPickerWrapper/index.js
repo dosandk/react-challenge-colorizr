@@ -19,7 +19,8 @@ class ColorPickerWrapper extends Component {
         return (
             <div className="create__container">
                 <h1 className="title">Choose your color</h1>
-                <ColorPicker defaultValue='#452135' onDrag={this.onChangeColor.bind(this)} />
+                <ColorPicker defaultValue={ this.props.common.mainColor }
+                             onDrag={this.onChangeColor.bind(this)} />
             </div>
         )
     }

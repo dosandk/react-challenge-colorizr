@@ -10,7 +10,12 @@ export default function DarkerAndLighter(state = initialState, action) {
             return { ...state, theme: action.data };
         case 'SELECT_ALL_COLORS':
             console.error('DarkerAndLighter SELECT_ALL_COLORS');
-            return { ...state, showRemoveAllBtn: true };
+            if (action.data.name === 'DarkerAndLighter') {
+                return { ...state, showRemoveAllBtn: true };
+            }
+            else {
+                return { ...state  };
+            }
         case 'REMOVE_ALL_COLORS':
             console.error('DarkerAndLighter REMOVE_ALL_COLORS');
             return { ...state, showRemoveAllBtn: false };

@@ -1,12 +1,12 @@
 import * as Constants from '../constants'
 
-export default function changeMainColor(data) {
+export default function changeMixedColor(data) {
 
     return (dispatch) => {
         dispatch({
-            type: Constants.CHANGE_MAIN_COLOR,
+            type: Constants.CHANGE_MIXED_COLOR,
             data: {
-                mainColor: data
+                mixedColor: data
             }
         });
     }

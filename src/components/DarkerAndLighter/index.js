@@ -15,7 +15,10 @@ class DarkerAndLighter extends React.Component {
         const palletName = 'Darker and Lighter';
 
         const onSelectAllColors = () => {
-            this.props.selectAllColors(this.props.common.shadedColors);
+            this.props.selectAllColors({
+                name: 'DarkerAndLighter',
+                colorsType: 'shadedColors'
+            });
         };
 
         const removeAllColors = this.props.removeAllColors;

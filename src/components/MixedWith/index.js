@@ -1,19 +1,49 @@
 import React from 'react';
 import changeMixedTheme from '../../actions/change-mixed-theme'
+import changeMixedColor from '../../actions/change-mixed-color'
+import selectAllColors from '../../actions/select-all-colors'
 import ColorPallet from '../colorPallet'
 import ColorsList from '../../containers/ColorsList'
-import selectColor from '../../actions/select-color'
+import removeAllColors from '../../actions/remove-all-colors'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import './index.scss'
 
 class MixedWith extends React.Component {
     render() {
-        console.error('MixedWith');
-        console.log(this.props);
+        const { theme, showRemoveAllBtn, isColorPickerVisible } = this.props.mixedWith;
+
+        const onSelectAllColors = () => {
+            this.props.selectAllColors({
+                name: 'MixedWith',
+                colorsType: 'mixedColors'
+            });
+        };
+
+        const onChangeTheme = () => {
+            switch (theme) {
+                case 'light':
+                    this.props.changeMixedTheme('dark');
+                    break;
+                case 'dark':
+                    this.props.changeMixedTheme('light');
+                    break;
+            }
+        };
+
+        const removeAllColors = this.props.removeAllColors;
 
         return (
-            <ColorPallet showColorPicker={ true } >
+            <ColorPallet showColorPicker={ true }
+                         mixedColor={ this.props.common.mixedColor }
+                         showRemoveAllBtn={ showRemoveAllBtn }
+                         onChangeTheme={ onChangeTheme }
+                         changeMixedColor={ this.props.changeMixedColor }
+                         isColorPickerVisible={ isColorPickerVisible }
+                         removeAllColors={ removeAllColors }
+                         onSelectAllColors={ onSelectAllColors }
+                         theme={ theme }
+                         palletName={ 'Mixed with' } >
                 <ColorsList componentName={'mix'}/>
             </ColorPallet>
         );
@@ -30,7 +60,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         changeMixedTheme: bindActionCreators(changeMixedTheme, dispatch),
-        selectColor: bindActionCreators(selectColor, dispatch)
+        selectAllColors: bindActionCreators(selectAllColors, dispatch),
+        removeAllColors: bindActionCreators(removeAllColors, dispatch),
+        changeMixedColor: bindActionCreators(changeMixedColor, dispatch)
     }
 }
 
