@@ -2,7 +2,7 @@ import React from 'react';
 import changeMixedTheme from '../../actions/change-mixed-theme'
 import changeMixedColor from '../../actions/change-mixed-color'
 import selectAllColors from '../../actions/select-all-colors'
-import ColorPallet from '../colorPallet'
+import ColorPallet from '../ColorPallet'
 import ColorsList from '../../containers/ColorsList'
 import removeAllColors from '../../actions/remove-all-colors'
 import { connect } from 'react-redux'
@@ -16,7 +16,7 @@ class MixedWith extends React.Component {
         const onSelectAllColors = () => {
             this.props.selectAllColors({
                 name: 'MixedWith',
-                colorsType: 'mixedColors'
+                colors: this.props.mixedWith.mixedColors
             });
         };
 
@@ -36,6 +36,7 @@ class MixedWith extends React.Component {
         return (
             <ColorPallet showColorPicker={ true }
                          mixedColor={ this.props.common.mixedColor }
+                         mainColor={ this.props.common.mainColor }
                          showRemoveAllBtn={ showRemoveAllBtn }
                          onChangeTheme={ onChangeTheme }
                          changeMixedColor={ this.props.changeMixedColor }

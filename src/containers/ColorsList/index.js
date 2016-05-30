@@ -14,7 +14,10 @@ import { bindActionCreators } from 'redux'
 
 class ColorsList extends React.Component {
     componentDidMount() {
-        const { mainColor, mixedColor } = this.props.common;
+        console.error('componentDidMount');
+
+        const { mainColor } = this.props.common;
+        const { mixedColor } = this.props.mixedWith;
 
         let colors;
 
@@ -31,7 +34,11 @@ class ColorsList extends React.Component {
     }
 
     render() {
-        const { selectedColors, mainColor, mixedColor } = this.props.common;
+        console.error('render');
+        console.log( this.props );
+        
+        const { selectedColors, mainColor } = this.props.common;
+        const { mixedColor } = this.props.mixedWith;
 
         const component = this.props.componentName === 'shade' ? this.props.DarkerAndLighter : this.props.mixedWith;
         const themeClass = component.theme === 'dark' ? 'color-samples--dark' : '';

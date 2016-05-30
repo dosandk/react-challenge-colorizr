@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import changeMainColor from '../../actions/change-main-color'
+import recalculateMixedColors from '../../utils/recalculate-mixed-colors'
+import recalculateShadedColors from '../../utils/recalculate-shaded-colors'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ColorPicker from 'react-color-picker'
@@ -10,7 +12,15 @@ class ColorPickerWrapper extends Component {
         super(props);
 
         this.onChangeColor = (color) => {
-            this.props.changeMainColor(color);
+            let mixedColors = recalculateMixedColors({ mainColor: color, mixedColor: props.mixedWith.mixedColor });
+            let shadedColors = recalculateShadedColors({ mainColor: color });
+
+            this.props.changeMainColor({
+                mainColor: color,
+                mixedColors,
+                shadedColors
+            });
+
             document.querySelector('.content').style.background = color;
         };
     }

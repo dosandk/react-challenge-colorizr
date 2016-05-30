@@ -6,7 +6,8 @@ export default function changeMixedColor(data) {
         dispatch({
             type: Constants.CHANGE_MIXED_COLOR,
             data: {
-                mixedColor: data
+                mixedColor: data.mixedColor,
+                mixedColors: data.mixedColors
             }
         });
     }

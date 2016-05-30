@@ -6,7 +6,9 @@ export default function changeMainColor(data) {
         dispatch({
             type: Constants.CHANGE_MAIN_COLOR,
             data: {
-                mainColor: data
+                mainColor: data.mainColor,
+                shadedColors: data.shadedColors,
+                mixedColors: data.mixedColors
             }
         });
     }

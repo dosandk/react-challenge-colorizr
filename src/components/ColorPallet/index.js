@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorPicker from 'react-color-picker'
+import recalculateMixedColors from '../../utils/recalculate-mixed-colors'
 import './index.scss'
 
 class Header extends React.Component {
@@ -15,7 +16,15 @@ class Header extends React.Component {
         };
 
         this.onChangeMixColor = (color) => {
-            this.props.changeMixedColor(color)
+            console.error(111);
+            console.log(color);
+
+            const mixedColors = recalculateMixedColors({ mainColor: props.mainColor, mixedColor: color });
+
+            this.props.changeMixedColor({
+                mixedColor: color,
+                mixedColors
+            })
         }
     }
 
@@ -50,9 +59,10 @@ class Header extends React.Component {
     }
 }
 
-export default function colorPallet(props) {
+export default function ColorPallet(props) {
     const currentState = {
         mixedColor: props.mixedColor || '#894B9D',
+        mainColor: props.mixedColor || '#894B9D',
         showColorPicker: props.showColorPicker || false,
         palletName: props.palletName || 'Colors pallet',
         onChangeTheme: props.onChangeTheme || null,
@@ -67,7 +77,8 @@ export default function colorPallet(props) {
     return (
         <div className="container color-samples-container">
             <Header palletName={ currentState.palletName }
-                    mixedColor={ currentState.mixedColor}
+                    mixedColor={ currentState.mixedColor }
+                    mainColor={ currentState.mainColor }
                     changeMixedColor= { currentState.changeMixedColor }
                     showColorPicker={ currentState.showColorPicker } />
 

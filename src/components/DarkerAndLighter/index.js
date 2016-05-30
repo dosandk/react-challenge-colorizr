@@ -1,5 +1,5 @@
 import React from 'react'
-import ColorPallet from '../colorPallet'
+import ColorPallet from '../ColorPallet'
 import changeShadeTheme from '../../actions/change-shade-theme'
 import ColorsList from '../../containers/ColorsList'
 import selectAllColors from '../../actions/select-all-colors'
@@ -7,7 +7,6 @@ import removeAllColors from '../../actions/remove-all-colors'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import './index.scss'
 
 class DarkerAndLighter extends React.Component {
     render() {
@@ -15,9 +14,12 @@ class DarkerAndLighter extends React.Component {
         const palletName = 'Darker and Lighter';
 
         const onSelectAllColors = () => {
+            console.error('!!!!!');
+            console.log(this.props);
+
             this.props.selectAllColors({
                 name: 'DarkerAndLighter',
-                colorsType: 'shadedColors'
+                colors: this.props.DarkerAndLighter.shadedColors
             });
         };
 
