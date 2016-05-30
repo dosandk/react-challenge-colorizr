@@ -13,26 +13,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class ColorsList extends React.Component {
-    componentDidMount() {
-        console.error('componentDidMount');
-
-        const { mainColor } = this.props.common;
-        const { mixedColor } = this.props.mixedWith;
-
-        let colors;
-
-        switch (this.props.componentName) {
-            case 'shade':
-                colors = recalculateShadedColors({ mainColor, mixedColor });
-                this.props.setShadedColors(colors);
-                break;
-            case 'mix':
-                colors = recalculateMixedColors({ mainColor, mixedColor });
-                this.props.setMixedColors(colors);
-                break;
-        }
-    }
-
     render() {
         console.error('render');
         console.log( this.props );

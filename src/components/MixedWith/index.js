@@ -1,6 +1,9 @@
 import React from 'react';
 import changeMixedTheme from '../../actions/change-mixed-theme'
 import changeMixedColor from '../../actions/change-mixed-color'
+
+import recalculateMixedColors from '../../utils/recalculate-mixed-colors'
+
 import selectAllColors from '../../actions/select-all-colors'
 import ColorPallet from '../ColorPallet'
 import ColorsList from '../../containers/ColorsList'
@@ -11,12 +14,13 @@ import './index.scss'
 
 class MixedWith extends React.Component {
     render() {
-        const { theme, showRemoveAllBtn, isColorPickerVisible } = this.props.mixedWith;
+        const { theme, showRemoveAllBtn, isColorPickerVisible, mixedColor } = this.props.mixedWith;
+        const { mainColor } = this.props.common;
 
         const onSelectAllColors = () => {
             this.props.selectAllColors({
                 name: 'MixedWith',
-                colors: this.props.mixedWith.mixedColors
+                colors: recalculateMixedColors({ mainColor, mixedColor })
             });
         };
 
@@ -35,7 +39,7 @@ class MixedWith extends React.Component {
 
         return (
             <ColorPallet showColorPicker={ true }
-                         mixedColor={ this.props.common.mixedColor }
+                         mixedColor={ this.props.mixedWith.mixedColor }
                          mainColor={ this.props.common.mainColor }
                          showRemoveAllBtn={ showRemoveAllBtn }
                          onChangeTheme={ onChangeTheme }

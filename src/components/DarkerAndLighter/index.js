@@ -1,5 +1,6 @@
 import React from 'react'
 import ColorPallet from '../ColorPallet'
+import recalculateShadedColors from '../../utils/recalculate-shaded-colors'
 import changeShadeTheme from '../../actions/change-shade-theme'
 import ColorsList from '../../containers/ColorsList'
 import selectAllColors from '../../actions/select-all-colors'
@@ -14,12 +15,9 @@ class DarkerAndLighter extends React.Component {
         const palletName = 'Darker and Lighter';
 
         const onSelectAllColors = () => {
-            console.error('!!!!!');
-            console.log(this.props);
-
             this.props.selectAllColors({
                 name: 'DarkerAndLighter',
-                colors: this.props.DarkerAndLighter.shadedColors
+                colors: recalculateShadedColors({ mainColor: this.props.common.mainColor })
             });
         };
 

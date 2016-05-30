@@ -15,7 +15,7 @@ export default function mixedWith(state = initialState, action) {
         return { ...state, theme: action.data };
     case Constants.CHANGE_MIXED_COLOR:
         console.error('mixedWith CHANGE_MIXED_COLOR');
-        return { ...state, mixedColors: action.data.mixedColors };
+        return { ...state, mixedColor: action.data.mixedColor, mixedColors: action.data.mixedColors, showRemoveAllBtn: false };
     case Constants.SELECT_ALL_COLORS:
         console.error('mixedWith SELECT_ALL_COLORS');
 
