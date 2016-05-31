@@ -43,29 +43,47 @@
             return "#"+(0x1000000+(Math.round((R2-R1)*p)+R1)*0x10000+(Math.round((G2-G1)*p)+G1)*0x100+(Math.round((B2-B1)*p)+B1)).toString(16).slice(1);
         }
 
+        function brightness(color) {
+            let result = 'dark';
+
+            var c = color.substring(1);      // strip #
+            var rgb = parseInt(c, 16);   // convert rrggbb to decimal
+            var r = (rgb >> 16) & 0xff;  // extract red
+            var g = (rgb >>  8) & 0xff;  // extract green
+            var b = (rgb >>  0) & 0xff;  // extract blue
+
+            var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // 0 - 255 per ITU-R BT.709
+
+            if (luma > 127) {
+                result = '#fff';
+            }
+
+            return result;
+        }
+
 //        console.log(blendColors('#00ff00', '#0000ff', 0.5));
 
         var initVal = '#ff0000';
         var arr = Array(10);
 
-        var riba = arr.reduce(function(previousValue, currentItem, index, arr) {
-            console.log('previousValue', previousValue);
-            console.log('currentItem', currentItem);
+//        var riba = arr.reduce(function(previousValue, currentItem, index, arr) {
+////            console.log('previousValue', previousValue);
+////            console.log('currentItem', currentItem);
+//
+//            return shadeColor(previousValue, 10);
+//        }, {});
 
-            return shadeColor(previousValue, 10);
-        }, {});
+//        var someArr = [];
+//
+//        new Array(10).fill(1).reduce(function(previousValue, currentItem, index, arr) {
+////            console.log('previousValue', previousValue);
+//
+//            someArr.push(shadeColor(previousValue, -0.1));
+//
+//            return shadeColor(previousValue, -0.1);
+//        }, initVal);
 
-        var someArr = [];
-
-        new Array(10).fill(1).reduce(function(previousValue, currentItem, index, arr) {
-            console.log('previousValue', previousValue);
-
-            someArr.push(shadeColor(previousValue, -0.1));
-
-            return shadeColor(previousValue, -0.1);
-        }, initVal);
-
-        console.log('someArr', someArr);
+//        console.log('someArr', someArr);
 
 //        var color1 = shadeColor('#ff0000', -0.1);
 //        var color2 = shadeColor(color1, -0.1);

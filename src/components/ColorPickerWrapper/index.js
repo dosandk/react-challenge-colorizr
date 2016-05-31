@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import brightness from '../../utils/brightness'
 import changeMainColor from '../../actions/change-main-color'
 import recalculateMixedColors from '../../utils/recalculate-mixed-colors'
 import recalculateShadedColors from '../../utils/recalculate-shaded-colors'
@@ -28,7 +29,7 @@ class ColorPickerWrapper extends Component {
     render() {
         return (
             <div className="create__container">
-                <h1 className="title">Choose your color</h1>
+                <h1 className="title" style={{ color: brightness(this.props.common.mainColor) }} >Choose your color</h1>
                 <ColorPicker defaultValue={ this.props.common.mainColor }
                              onDrag={this.onChangeColor.bind(this)} />
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { COLORS_SIZE } from '../../constants'
+import brightness from '../../utils/brightness'
 import { bindActionCreators } from 'redux'
 import removeColor from '../../actions/remove-color'
 import { connect } from 'react-redux'
@@ -15,7 +16,7 @@ class Color extends React.Component {
         };
 
         const btnStyles = {
-            color: '#F5F5F5'
+            color: this.props.color ? brightness(this.props.color) : '#F5F5F5'
         };
 
         function onRemoveColor() {
