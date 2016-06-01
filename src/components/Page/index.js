@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from '../Header';
-import Body from '../Body';
 import Footer from '../Footer';
 import '../../styles/main.scss';
 
-export default function Page() {
+export default function Page(props) {
     return (
         <div>
             <Header />
-            <Body />
+            { props.children }
             <Footer />
         </div>
     )

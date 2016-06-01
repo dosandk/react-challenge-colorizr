@@ -6,7 +6,7 @@ import recalculateMixedColors from '../../utils/recalculate-mixed-colors'
 
 import selectAllColors from '../../actions/select-all-colors'
 import ColorPallet from '../ColorPallet'
-import ColorsList from '../../containers/ColorsList'
+import ColorsList from '../ColorsList'
 import removeAllColors from '../../actions/remove-all-colors'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'

@@ -16,9 +16,6 @@ class Header extends React.Component {
         };
 
         this.onChangeMixColor = (color) => {
-            console.error(111);
-            console.log(color);
-
             const mixedColors = recalculateMixedColors({ mainColor: props.mainColor, mixedColor: color });
 
             this.props.changeMixedColor({

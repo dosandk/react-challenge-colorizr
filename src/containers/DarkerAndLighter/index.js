@@ -2,7 +2,7 @@ import React from 'react'
 import ColorPallet from '../ColorPallet'
 import recalculateShadedColors from '../../utils/recalculate-shaded-colors'
 import changeShadeTheme from '../../actions/change-shade-theme'
-import ColorsList from '../../containers/ColorsList'
+import ColorsList from '../ColorsList'
 import selectAllColors from '../../actions/select-all-colors'
 import removeAllColors from '../../actions/remove-all-colors'
 

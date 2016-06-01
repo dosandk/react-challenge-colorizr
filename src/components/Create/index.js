@@ -1,11 +1,11 @@
 import React from 'react'
 import { MAIN_COLOR } from '../../constants'
-import ColorPickerWrapper from '../ColorPickerWrapper'
-import SetUpColors from '../SetUpColors'
-import DarkerAndLighter from '../DarkerAndLighter';
-import MixedWith from '../MixedWith';
+import ColorPickerWrapper from '../../containers/ColorPickerWrapper'
+import SetUpColors from '../../containers/SetUpColors'
+import DarkerAndLighter from '../../containers/DarkerAndLighter';
+import MixedWith from '../../containers/MixedWith';
 
-export default function Body() {
+export default function Create() {
     return (
         <div className="content" style={{ background: MAIN_COLOR }}>
                 <ColorPickerWrapper />

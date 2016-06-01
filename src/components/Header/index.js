@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavLink from '../NavLink'
 import './index.scss';
 
 export default function Header() {
@@ -15,10 +16,10 @@ export default function Header() {
                 </div>
                 <div className="site-header__navbar">
                     <nav className="navbar">
-                        <a className="navbar__link navbar__link--active" href="#/create">Create</a>
-                        <a className="navbar__link" href="#/explore">Explore</a>
-                        <a className="navbar__link" href="#/presets">Presets</a>
-                        <a className="navbar__link" href="#/export">Export</a>
+                        <NavLink to='/create'>Create</NavLink>
+                        <NavLink to='/explore'>Explore</NavLink>
+                        <NavLink to='/presets'>Presets</NavLink>
+                        <NavLink to='/export'>Export</NavLink>
                     </nav>
                 </div>
             </div>
