@@ -1,7 +1,10 @@
 import React from 'react';
-import ColorsPreset from '../ColorsPreset'
+import ColorsPreset from '../../components/ColorsPreset'
+import selectColors from '../../actions/select-colors'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-const riba = [
+const presets = [
     {
         "type": "scheme",
         "name": "aspirin",
@@ -55,19 +58,35 @@ const riba = [
 ];
 
 export default class ColorsPresetsList extends React.Component {
-    static defaultProps = {
-
-    };
-
-    constructor(props) {
-        super(props);
-    }
-
     getPresetsItems() {
-        return riba.map(function(preset) {
-            const {name, colors} = preset;
+        const { selectedColors } = this.props.common;
 
-            return <ColorsPreset key = { name } colors = { colors } name = { name }/>
+        const checkIsSelected = (colors) => {
+            let isSelected = true;
+            const colorsLength = colors.length;
+
+            for (let i = 0; i < colorsLength; i++) {
+                if (selectedColors.indexOf(colors[i]) < 0) {
+                    isSelected = false;
+                    console.count();
+                    break;
+                }
+            }
+
+            return isSelected;
+        };
+
+        const onSelectColors = (colors) => (e) => this.props.selectColors(colors)
+
+        return presets.map(function(preset) {
+            const {name, colors} = preset;
+            const selected = checkIsSelected(colors);
+
+            return <ColorsPreset key = { name }
+                                 selected = { selected }
+                                 selectPreset = { onSelectColors(colors) }
+                                 colors = { colors }
+                                 name = { name } />
         })
     }
 
@@ -77,3 +96,15 @@ export default class ColorsPresetsList extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return state;
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        selectColors: bindActionCreators(selectColors, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ColorsPresetsList);
