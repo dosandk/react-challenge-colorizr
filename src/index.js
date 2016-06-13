@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, browserHistory } from 'react-router'
+import { Router, browserHistory, hashHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom';
 
@@ -10,7 +10,7 @@ const store = configureStore()
 
 render(
     <Provider store={store}>
-        <Router history={ browserHistory } routes={routes} />
+        <Router history={ hashHistory } routes={routes} />
     </Provider>,
     document.getElementById('app')
 )
