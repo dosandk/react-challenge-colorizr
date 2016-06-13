@@ -68,7 +68,6 @@ export default class ColorsPresetsList extends React.Component {
             for (let i = 0; i < colorsLength; i++) {
                 if (selectedColors.indexOf(colors[i]) < 0) {
                     isSelected = false;
-                    console.count();
                     break;
                 }
             }

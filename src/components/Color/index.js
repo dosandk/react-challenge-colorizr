@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ColorHtml(props) {
+export default (props) => {
     const colorStyle = props.colorStyle || 'grey';
     const colorClass = props.colorClass || '';
     const btnClass = props.btnClass || 'fa-times';

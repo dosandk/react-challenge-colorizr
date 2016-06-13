@@ -11,12 +11,7 @@ export default function common(state = initialState, action) {
         case Constants.CHANGE_MAIN_COLOR:
             return { ...state, ...action.data };
         case Constants.SELECT_COLORS:
-            if (state.selectedColors.length >= Constants.COLORS_SIZE) {
-                return { ...state, selectedColors: state.selectedColors.slice(action.data.length).concat(action.data) }
-            }
-            else {
-                return { ...state, selectedColors: state.selectedColors.concat(action.data) }
-            }
+            return { ...state, selectedColors: action.data };
         case Constants.SELECT_COLOR:
             if (state.selectedColors.length >= Constants.COLORS_SIZE) {
                 return { ...state, selectedColors: state.selectedColors.slice(1).concat([action.data]) };

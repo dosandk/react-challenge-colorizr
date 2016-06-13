@@ -354,8 +354,6 @@ textarea {
     font: inherit
 }
 
-/*normalize end*/
-
 [class*=grid] {
     box-sizing: border-box;
     display: flex;
@@ -1609,8 +1607,6 @@ html {
     font-size: 10px;
     box-sizing: border-box
 }
-
-
 
 *, :after, :before {
     box-sizing: inherit

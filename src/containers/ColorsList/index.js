@@ -14,9 +14,6 @@ import { bindActionCreators } from 'redux'
 
 class ColorsList extends React.Component {
     render() {
-        console.error('render');
-        console.log( this.props );
-        
         const { selectedColors, mainColor } = this.props.common;
         const { mixedColor } = this.props.mixedWith;
 

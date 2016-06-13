@@ -44,6 +44,10 @@
     opacity: 1
 }
 
+.selected__color--active {
+    cursor: pointer
+}
+
 @media (min-width: 900px) {
     .selected__color {
         height: 5rem;
